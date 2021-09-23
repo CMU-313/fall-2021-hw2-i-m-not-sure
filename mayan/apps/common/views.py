@@ -22,6 +22,9 @@ class AboutView(SimpleView):
     extra_context = {'title': _('About')}
     template_name = 'appearance/about.html'
 
+class StatisticsView(SimpleView):
+    extra_context = {'title': _('Statistics')}
+    template_name = 'appearance/statistics.html'
 
 class FaviconRedirectView(RedirectView):
     permanent = True
