@@ -14,7 +14,8 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: List files in the repository
+      - name: Running tests
         run: |
+								  docker-compose build docker/docker-compose.yml
           make docker-runtest-all
       - run: echo "🍏 This job's status is ${{ job.status }}."
