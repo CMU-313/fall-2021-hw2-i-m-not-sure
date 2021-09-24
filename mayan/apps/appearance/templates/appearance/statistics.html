@@ -66,6 +66,24 @@
     {% appearance_get_icon 'mayan.apps.common.icons.icon_source_code' as icon_source_code %}
 
     <div class="well">
+        <div class="well center-block">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form action="/search/results/" class="form-horizontal" id="formSearch" method="get" role="search">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <input class="form-control" name="q" placeholder="Search terms" type="text" value="">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">
+                                        Search
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <h3 class="text-center">Mayan EDMS</h3>
         <p class="text-center">Version 4.0.7</p>
         <p class="text-center">Build number: v4.0.6-7-g542ed0cf92_Fri Jun 11 05:49:22 2021 -0400</p>
