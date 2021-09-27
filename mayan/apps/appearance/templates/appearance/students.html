@@ -144,6 +144,11 @@
                                 </tr>
                             </thead>
 <!--Body of ranking list-->
+							<ul>
+							{% for candidate in candidates %}
+								<li>{{candidate}}</li>
+							{% endfor %}
+							</ul>
                             <tbody>
 <!-- First Row of the ranking list-->
                                 <tr>
