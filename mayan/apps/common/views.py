@@ -38,9 +38,11 @@ class StudentsView(SimpleView):
     def get_extra_context(self):
         candidates = Candidate.objects.all()
         reviews = CandidateReview.objects.all()
+        student_id = self.kwargs['student_id']
         return {
             'candidates': candidates,
             'reviews' : reviews,
+            'student_id': student_id,
             'title': _('Students')
         }
 
