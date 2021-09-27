@@ -6,7 +6,7 @@ from django.views.i18n import JavaScriptCatalog
 from .api_views import APIContentTypeList
 from .views import (
     AboutView, FaviconRedirectView, HomeView, LicenseView, ObjectCopyView,
-    RootView, SetupListView, ToolsListView
+    RootView, SetupListView, ToolsListView, StatisticsView, StudentsView
 )
 
 urlpatterns_misc = [
@@ -29,7 +29,9 @@ urlpatterns = [
     url(regex=r'^about/$', name='about_view', view=AboutView.as_view()),
     url(regex=r'^license/$', name='license_view', view=LicenseView.as_view()),
     url(regex=r'^setup/$', name='setup_list', view=SetupListView.as_view()),
-    url(regex=r'^tools/$', name='tools_list', view=ToolsListView.as_view())
+    url(regex=r'^tools/$', name='tools_list', view=ToolsListView.as_view()),
+    url(regex=r'^statistics/$', name='statistics_view', view=StatisticsView.as_view()),
+    url(regex=r'^students/(?P<student_id>[0-9]+)/$', name='students_view', view=StudentsView.as_view())
 ]
 
 urlpatterns.extend(urlpatterns_misc)

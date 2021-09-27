@@ -1,0 +1,257 @@
+{% extends 'appearance/base.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% load appearance_tags %}
+{% load common_tags %}
+{% load smart_settings_tags %}
+
+{% block title %}{% trans 'About' %}{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        @font-face {
+            font-family: 'mayan-edms';
+            src: url("{% static 'appearance/fonts/mayan-edms.ttf' %}") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        [class^="icon-"], [class*=" icon-"] {
+            font-family: 'mayan-edms';
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .icon-mayan-edms-logo:before {
+            content: "\e600";
+            font-size: 150%;
+        }
+
+        .mayan-edms-logo {
+            font-family: 'IM Fell English SC', serif;
+            font-size: 150%;
+            text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .mayan-edms-logo {
+                font-size: 300%;
+            }
+        }
+
+        @media (min-width: 991px) {
+            .mayan-edms-logo {
+                font-size: 500%;
+            }
+        }
+    </style>
+{% endblock stylesheets %}
+
+{% block content %}
+    {% common_project_information '__build_string__' as build_number %}
+    {% smart_setting 'COMMON_PROJECT_TITLE' as setting_project_title %}
+    {% common_project_information '__title__' as project_title %}
+
+    {% appearance_get_icon 'mayan.apps.common.icons.icon_documentation' as icon_documentation %}
+    {% appearance_get_icon 'mayan.apps.common.icons.icon_forum' as icon_forum %}
+    {% appearance_get_icon 'mayan.apps.common.icons.icon_social_paypal' as icon_social_paypal %}
+    {% appearance_get_icon 'mayan.apps.common.icons.icon_source_code' as icon_source_code %}
+<!-- Search Bar: Search Students Name-->
+    <div class="well">
+        <div class="well center-block">
+            <div class="row">
+                <div class="col-xs-12">
+                    <form action="/search/results/" class="form-horizontal" id="formSearch" method="get" role="search">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <input class="form-control" name="q" placeholder="Search Student Name" type="text" value="">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">
+                                        Search
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Score Distribution-->
+    <div class="well center-block">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <a class="btn btn-primary btn-lg btn-block " href="/announcements/announcements/" style="height: 120px;">
+                    <br>
+                    Score Distribution
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
+                    <br>
+                    Average GPA: 4.0
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
+                    <br>
+                    Average SAT: 1500
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
+                    <br>
+                    Average ACT: 40
+                </a>
+            </div>
+        </div>
+    </div>
+<!-- Students Ranking List-->
+    <div class="well center-block">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8">
+                <h3 class="text-center">Students Ranking</h3>
+                <div class="well center-block">
+                    <div class="table-responsive">
+                        <table class="table table-condensed table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span style="white-space: nowrap">
+                                            <span class="appearance-list-column-label">
+                                                Student Name
+                                            </span> 
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span style="white-space: nowrap">
+                                            <span class="appearance-list-column-label">
+                                                School
+                                            </span>
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span style="white-space: nowrap">
+                                            <span class="appearance-list-column-label">
+                                                Score
+                                            </span>
+                                        </span>
+                                    </th>
+                                    <th class="">
+                                        &nbsp;
+                                    </th>
+                                </tr>
+                            </thead>
+<!--Body of ranking list-->
+                            <tbody>
+<!-- First Row of the ranking list-->
+                                {% for candidate in candidates %}
+                                <tr>
+                                    <td>
+                                        <div class=" None">
+                                            <a href="/students/">
+                                                {{candidate.candidate_name}}
+                                            </a>
+                                        </div>
+                                    </td>
+                                    
+                                    <td>
+                                        <div class=" None">
+                                            {{candidate.high_school}}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class=" None">
+                                            {{candidate.exam_score}}
+                                        </div>
+                                    </td>
+                                    <td class="last">
+                                        <div class="btn-list">
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+<!-- Second Row of the ranking list-->
+                                <tr>
+                                    <td>
+                                        <div class=" None">
+                                            <a href="/students/">
+                                                Student 2
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class=" None">
+                                            *** High school
+                        
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class=" None">
+                                            89
+                                        </div>
+                                    </td>
+                                    <td class="last">
+                                        <div class="btn-list">
+
+                                        </div>
+                                    </td>
+                                </tr>
+<!-- Third Row of the ranking list-->
+                                <tr>
+                                    <td>
+                                        <div class=" None">
+                                            <a href="#">
+                                                Student 3
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class=" None">
+                                            *** High school
+                        
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class=" None">
+                                            89
+                                        </div>
+                                    </td>
+                                    <td class="last">
+                                        <div class="btn-list">
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+<!-- Reviewers List-->
+            <div class="col-xs-12 col-sm-2">
+                <p class="text-center">Average Score of Reviewers</p>
+                <div class=" None">
+                    reviewer 1: 80
+                </div>
+                <div class=" None">
+                    reviewer 2: 80
+                </div>
+                <div class=" None">
+                    reviewer 3: 80
+                </div>
+                <div class=" None">
+                    reviewer 4: 80
+                </div>
+            </div>
+        </div>
+    </div>   
+{% endblock %}

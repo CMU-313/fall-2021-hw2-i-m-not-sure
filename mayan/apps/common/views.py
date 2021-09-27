@@ -2,7 +2,6 @@ from django.contrib import messages
 from django.templatetags.static import static
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
-
 from stronghold.views import StrongholdPublicMixin
 
 from mayan.apps.views.generics import ConfirmView, SimpleView
@@ -16,12 +15,36 @@ from .icons import icon_setup
 from .menus import menu_tools, menu_setup
 from .permissions import permission_object_copy
 from .settings import setting_home_view
-
+from mayan.apps.display.models import (
+    Candidate, CandidateReview
+)
 
 class AboutView(SimpleView):
     extra_context = {'title': _('About')}
     template_name = 'appearance/about.html'
 
+class StatisticsView(SimpleView):
+    template_name = 'appearance/statistics.html'
+    def get_extra_context(self):
+        candidates = Candidate.objects.all()
+        reviews = CandidateReview.objects.all()
+        return {
+            'candidates': candidates,
+            'reviews' : reviews,
+            'title': _('Statistics')
+        }
+class StudentsView(SimpleView):
+    template_name = 'appearance/students.html'
+    def get_extra_context(self):
+        candidates = Candidate.objects.all()
+        reviews = CandidateReview.objects.all()
+        student_id = self.kwargs['student_id']
+        return {
+            'candidates': candidates,
+            'reviews' : reviews,
+            'student_id': student_id,
+            'title': _('Students')
+        }
 
 class FaviconRedirectView(RedirectView):
     permanent = True

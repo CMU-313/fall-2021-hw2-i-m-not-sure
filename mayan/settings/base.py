@@ -44,6 +44,8 @@ else:
 # Application definition
 
 INSTALLED_APPS = (
+    # model
+    'mayan.apps.display',
     # Placed at the top so it can override any template
     'mayan.apps.appearance',
     # Django
