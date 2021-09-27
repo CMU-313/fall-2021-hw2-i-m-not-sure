@@ -1,0 +1,16 @@
+- model: app.display
+  pk: 1
+  fields:
+    candidate_name: John
+    reviewer_name: Lennon
+    test_score: 90.1
+    experience_score: 80.5
+    skills_score: 70.2
+- model: app.display
+  pk: 2
+  fields:
+    candidate_name: Paul
+    reviewer_name: McCartney
+    test_score: 70.1
+    experience_score: 90.5
+    skills_score: 80.2
