@@ -88,7 +88,7 @@
 <!-- Students Information--> 
     <div class="well center-block">
         <div class="row">
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-5">
                 <h3 class="text-center">Student 1</h3>
                 <div class=" None">
                     Test review score: 00
@@ -110,7 +110,7 @@
                 </h1>
             </div>
 <!-- Students Ranking List-->
-            <div class="col-xs-12 col-sm-2">
+            <div class="col-xs-12 col-sm-3">
                 <h3 class="text-center">Students Ranking</h3>
                 <div class="well center-block">
                     <div class="table-responsive">
@@ -144,37 +144,38 @@
                                 </tr>
                             </thead>
 <!--Body of ranking list-->
-							<ul>
-							{% for candidate in candidates %}
-								<li>{{candidate}}</li>
-							{% endfor %}
-							</ul>
                             <tbody>
+                                
 <!-- First Row of the ranking list-->
-                                <tr>
-                                    <td>
-                                        <div class=" None">
-                                            <a href="/students/">
-                                                Student 1
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class=" None">
-                                            *** High school
-                        
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class=" None">
-                                            90
-                                        </div>
-                                    </td>
-                                    <td class="last">
-                                        <div class="btn-list">
-                                        </div>
-                                    </td>
-                                </tr>
+                                {% for candidate in candidates %}
+                                    <tr>
+                                        <td>
+                                            <div class=" None">
+                                                <a href="/students/">
+                                                    <ul>
+                                                        <li>{{candidate.candidate_name}}</li>
+                                                    </ul>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        
+                                        <td>
+                                            <div class=" None">
+                                                <li>{{candidate.high_school}}</li>
+
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class=" None">
+                                                <li>{{candidate.exam_score}}</li>
+                                            </div>
+                                        </td>
+                                        <td class="last">
+                                            <div class="btn-list">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
 <!-- Second Row of the ranking list-->
                                 <tr>
                                     <td>
