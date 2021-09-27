@@ -151,30 +151,26 @@
                                 </tr>
                             </thead>
 <!--Body of ranking list-->
-                            <ul>
-                            {% for candidate in candidates %}
-                                <li>{{candidate.candidate_name}}</li>
-                            {% endfor %}
-                            </ul>
                             <tbody>
 <!-- First Row of the ranking list-->
+                                {% for candidate in candidates %}
                                 <tr>
                                     <td>
                                         <div class=" None">
                                             <a href="/students/">
-                                                Student 1
+                                                <li>{{candidate.candidate_name}}</li>
                                             </a>
                                         </div>
                                     </td>
+                                    
                                     <td>
                                         <div class=" None">
-                                            *** High school
-                        
+                                            <li>{{candidate.high_school}}</li>
                                         </div>
                                     </td>
                                     <td>
                                         <div class=" None">
-                                            90
+                                            <li>{{candidate.exam_score}}</li>
                                         </div>
                                     </td>
                                     <td class="last">
@@ -182,6 +178,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                                {% endfor %}
 <!-- Second Row of the ranking list-->
                                 <tr>
                                     <td>
