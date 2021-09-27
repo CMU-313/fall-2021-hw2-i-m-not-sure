@@ -34,8 +34,15 @@ class StatisticsView(SimpleView):
             'title': _('Statistics')
         }
 class StudentsView(SimpleView):
-    extra_context = {'title': _('Students')}
     template_name = 'appearance/students.html'
+    def get_extra_context(self):
+        candidates = Candidate.objects.all()
+        reviews = CandidateReview.objects.all()
+        return {
+            'candidates': candidates,
+            'reviews' : reviews,
+            'title': _('Students')
+        }
 
 class FaviconRedirectView(RedirectView):
     permanent = True
