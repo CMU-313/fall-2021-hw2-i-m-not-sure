@@ -29,8 +29,10 @@ class StatisticsView(SimpleView):
     def get_extra_context(self):
         candidates = Candidate.objects.all()
         reviews = CandidateReview.objects.all()
+        #computing average data from candidate info
         avg_exam = candidates.aggregate(Avg('exam_score'))
         avg_gpa = candidates.aggregate(Avg('gpa_score'))
+        #computing average data from reviews 
         avg_exp = reviews.aggregate(Avg('experience_score'))
         avg_skills = reviews.aggregate(Avg('skills_score'))
         return {
@@ -45,8 +47,10 @@ class StatisticsView(SimpleView):
 class StudentsView(SimpleView):
     template_name = 'appearance/students.html'
     def get_extra_context(self):
+        #get lists of candidate info and reviews sorted by metrics 
         candidates = Candidate.objects.order_by('exam_score','gpa_score')
-        reviews = CandidateReview.objects.order_by('experience_score','skills_score')
+        reviews = CandidateReview.objects.order_by('experience_score',
+                  'skills_score')
         student_id = self.kwargs['student_id']
         return {
             'candidates': candidates,
