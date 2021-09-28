@@ -159,26 +159,28 @@
                             </thead>
 <!--Body of ranking list-->
                             <tbody>
-<!-- First Row of the ranking list-->
                                 {% for candidate in candidates %}
                                 <tr>
+<!--Candidate Name-->
                                     <td>
                                         <div class=" None">
                                             <a href="{% url 'common:students_view' candidate.id %}"> {{candidate.candidate_name}}
                                             </a>
                                         </div>
                                     </td>
-                                    
+<!--Candidate High School-->
                                     <td>
                                         <div class=" None">
                                             {{candidate.high_school}}
                                         </div>
                                     </td>
+<!--Candidate GPA-->
                                     <td>
                                         <div class=" None">
                                             {{candidate.gpa_score}}
                                         </div>
-                                    </td>                                    
+                                    </td> 
+<!--Candidate Exam-->                                   
                                     <td>
                                         <div class=" None">
                                             {{candidate.exam_score}}
@@ -236,7 +238,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-<!-- First Row of the ranking list-->
+<!-- Body of the reviewer list-->
                                 {% for review in reviews %}
                                 <tr>
                                     <td>
