@@ -48,6 +48,56 @@
         "gpa_score": 3.7,
         "exam_score": 1390
       }
+    },
+    {
+      "model": "display.CandidateReview",
+      "pk": 1,
+      "fields": {
+        "reviewer_name": "Michael Hilton",
+        "candidate_name": "Yenlin Kuo",
+        "experience_score": 2,
+        "skills_score": 4
+      }
+    },
+    {
+      "model": "display.CandidateReview",
+      "pk": 2,
+      "fields": {
+        "reviewer_name": "Michael Hilton",
+        "candidate_name": "Min Liu",
+        "experience_score": 4,
+        "skills_score": 3
+      }
+    },
+    {
+      "model": "display.CandidateReview",
+      "pk": 3,
+      "fields": {
+        "reviewer_name": "Anil Ada",
+        "candidate_name": "John Lennon",
+        "experience_score": 3,
+        "skills_score": 2
+      }
+    },
+    {
+      "model": "display.CandidateReview",
+      "pk": 4,
+      "fields": {
+        "reviewer_name": "Anil Ada",
+        "candidate_name": "Paul McCartney",
+        "experience_score": 3,
+        "skills_score": 4
+      }
+    },
+    {
+      "model": "display.CandidateReview",
+      "pk": 5,
+      "fields": {
+        "reviewer_name": "Michael Hilton",
+        "candidate_name": "Mim Kang",
+        "experience_score": 3,
+        "skills_score": 5
+      }
     }
   ]
   
