@@ -157,8 +157,7 @@
                                 <tr>
                                     <td>
                                         <div class=" None">
-                                            <a href="/students/1/">
-                                                {{candidate.candidate_name}}
+                                            <a href="{% url 'common:students_view' candidate.id %}"> {{candidate.candidate_name}}
                                             </a>
                                         </div>
                                     </td>
