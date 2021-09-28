@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.templatetags.static import static
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
-
+from django.db.models import Avg
 from stronghold.views import StrongholdPublicMixin
 
 from mayan.apps.views.generics import ConfirmView, SimpleView
@@ -16,12 +16,44 @@ from .icons import icon_setup
 from .menus import menu_tools, menu_setup
 from .permissions import permission_object_copy
 from .settings import setting_home_view
-
+from mayan.apps.display.models import (
+    Candidate, CandidateReview
+)
 
 class AboutView(SimpleView):
     extra_context = {'title': _('About')}
     template_name = 'appearance/about.html'
 
+class StatisticsView(SimpleView):
+    template_name = 'appearance/statistics.html'
+    def get_extra_context(self):
+        candidates = Candidate.objects.all()
+        reviews = CandidateReview.objects.all()
+        avg_exam = candidates.aggregate(Avg('exam_score'))
+        avg_gpa = candidates.aggregate(Avg('gpa_score'))
+        avg_exp = reviews.aggregate(Avg('experience_score'))
+        avg_skills = reviews.aggregate(Avg('skills_score'))
+        return {
+            'candidates': candidates,
+            'reviews' : reviews,
+            'avg_exam': avg_exam['exam_score__avg'],
+            'avg_gpa': avg_gpa['gpa_score__avg'],
+            'avg_exp': avg_exp['experience_score__avg'],
+            'avg_skills': avg_skills['skills_score__avg'],
+            'title': _('Statistics')
+        }
+class StudentsView(SimpleView):
+    template_name = 'appearance/students.html'
+    def get_extra_context(self):
+        candidates = Candidate.objects.order_by('exam_score','gpa_score')
+        reviews = CandidateReview.objects.order_by('experience_score','skills_score')
+        student_id = self.kwargs['student_id']
+        return {
+            'candidates': candidates,
+            'reviews' : reviews,
+            'student_id': student_id,
+            'title': _('Students')
+        }
 
 class FaviconRedirectView(RedirectView):
     permanent = True

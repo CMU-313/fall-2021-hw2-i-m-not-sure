@@ -1,0 +1,2 @@
+urlpatterns = []
+api_urls = []
