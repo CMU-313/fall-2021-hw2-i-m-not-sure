@@ -114,29 +114,130 @@
             </div>
         </div>
     </div>    
+<!--test-->
+    <div class="card h-100 bg-content outer-card-no-border">
+        <div class="card-header">
+            <h2 id="myinfo-title" tabindex="-1" class="text-center m-0 p-0">Personal Information</h2>
+        </div>
+    </div>
 <!-- Students Information--> 
+
     <div class="well">
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <h3 class="text-center">{{student.candidate_name}}</h3>
-                <div class=" None">
-                    Candidate ID: {{student.id}}
+                <div class="card h-100 bg-content outer-card-no-border">
+                    <div class="card-header">
+                        <h2 id="myinfo-title" tabindex="1" class="text-center m-0 p-0">{{student.candidate_name}}</h2>
+                    </div>
+                    <div class="card-body bg-light border m-3 p-3">
+                        <div class="form-content ">
+                            <form>
+                                <div class="form-group row ">
+                                    <div class="col-sm-4 pl-sm-0">
+                                        <div class="label-wrapper">
+                                            <p style="color:#5960c7";>Candidate ID:</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <span>        {{student.id}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card-body bg-light border m-3 p-3">
+                        <div class="form-content ">
+                            <form>
+                                <div class="form-group row ">
+                                    <div class="col-sm-4 pl-sm-0">
+                                        <div class="label-wrapper">
+                                            <p style="color:#5960c7";>High School:</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <span>        {{student.high_school}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card-body bg-light border m-3 p-3">
+                        <div class="form-content ">
+                            <form>
+                                <div class="form-group row ">
+                                    <div class="col-sm-4 pl-sm-0">
+                                        <div class="label-wrapper">
+                                            <p style="color:#5960c7";>GPA:</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <span>        {{student.gpa_score}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card-body bg-light border m-3 p-3">
+                        <div class="form-content ">
+                            <form>
+                                <div class="form-group row ">
+                                    <div class="col-sm-4 pl-sm-0">
+                                        <div class="label-wrapper">
+                                            <p style="color:#5960c7";>SAT Score:</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <span>        {{student.exam_score}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card-body bg-light border m-3 p-3">
+                        <div class="form-content ">
+                            <form>
+                                <div class="form-group row ">
+                                    <div class="col-sm-4 pl-sm-0">
+                                        <div class="label-wrapper">
+                                            <p style="color:#5960c7";>Average Experience Review score:</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <span>        {{student_avg_exp}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card-body bg-light border m-3 p-3">
+                        <div class="form-content ">
+                            <form>
+                                <div class="form-group row ">
+                                    <div class="col-sm-4 pl-sm-0">
+                                        <div class="label-wrapper">
+                                            <p style="color:#5960c7";>Average Skills Review score:</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <span>        {{student_avg_skills}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class=" None">
-                    High School: {{student.high_school}}
-                </div>
-                <div class=" None">
-                    GPA: {{student.gpa_score}}
-                </div>      
-                <div class=" None">
-                    SAT Score: {{student.exam_score}}
-                </div>                              
-                <div class=" None">
-                    Average Experience Review score: {{student_avg_exp}}
-                </div>
-                <div class=" None">
-                    Average Skills Review score: {{student_avg_skills}}
-                </div>
+                
             </div>
 <!-- Students Ranking List-->
             <div class="col-xs-12 col-sm-4">
