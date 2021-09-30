@@ -1,0 +1,12 @@
+Performance: 72
+	-Reduce Initial Server Response Time
+	-Enable Text Compression
+	-Eliminate Render-Blocking Resources
+Accessibility: 90
+	-Background and Foreground colors do not have a sufficient contrast ratio
+	-Aria IDs are not unique
+	-Links do not have a discernible name
+Best Practice: 100
+SEO: 78
+	-Document does not have a meta description
+	-Links are not crawlable
