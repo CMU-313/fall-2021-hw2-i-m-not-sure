@@ -85,30 +85,62 @@
             </div>
         </div>
     </div>
+<!-- Score Distribution-->
+    <div class="well center-block">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
+                    <br>
+                    Average GPA: {{avg_gpa}}
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
+                    <br>
+                    Average Exam Score: {{avg_exam}}
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
+                    <br>
+                    Average Experience Score: {{avg_exp}}
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
+                    <br>
+                    Average Skills Score: {{avg_skills}}
+                </a>
+            </div>
+        </div>
+    </div>    
 <!-- Students Information--> 
     <div class="well">
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <h3 class="text-center">Student 1</h3>
+                <h3 class="text-center">{{student.user_name}}</h3>
                 <div class=" None">
-                    Student Ranking: {{student_id}}
+                    Candidate ID: {{student.id}}
                 </div>
                 <div class=" None">
-                    Test review score: 00
+                    High School: {{student.high_school}}
                 </div>
                 <div class=" None">
-                    Experience review score: 00
+                    GPA: {{student.gpa_score}}
+                </div>      
+                <div class=" None">
+                    SAT Score: {{student.exam_score}}
+                </div>                              
+                <div class=" None">
+                    Average Experience Review score: {{student_avg_exp}}
                 </div>
                 <div class=" None">
-                    Skills review score: 00
-                </div>
-                <div class=" None">
-                    Honors review score: 00
+                    Average Skills Review score: {{student_avg_skills}}
                 </div>
             </div>
 <!-- Students Ranking List-->
             <div class="col-xs-12 col-sm-4">
-                <h3 class="text-center">Students Ranking</h3>
+                <h3 class="text-center">Candidate Ranking</h3>
                 <div class="well center-block">
                     <div class="table-responsive">
                         <table class="table table-condensed table-striped">
@@ -117,7 +149,7 @@
                                     <th>
                                         <span style="white-space: nowrap">
                                             <span class="appearance-list-column-label">
-                                                Student Name
+                                                Candidate Name
                                             </span> 
                                         </span>
                                     </th>
@@ -142,11 +174,11 @@
                             </thead>
 <!--Body of ranking list-->
                             <tbody>
-<!-- First Row of the ranking list-->
                                 {% for candidate in candidates %}
                                     <tr>
                                         <td>
                                             <div class=" None">
+                                                <!--Navigate to the candidate's profile page-->
                                                 <a href="/students/">
                                                     {{candidate.candidate_name}}
                                                 </a>
@@ -170,58 +202,6 @@
                                         </td>
                                     </tr>
                                 {% endfor %}
-<!-- Second Row of the ranking list-->
-                                <tr>
-                                    <td>
-                                        <div class=" None">
-                                            <a href="/students/">
-                                                Student 2
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class=" None">
-                                            *** High school
-                        
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class=" None">
-                                            89
-                                        </div>
-                                    </td>
-                                    <td class="last">
-                                        <div class="btn-list">
-
-                                        </div>
-                                    </td>
-                                </tr>
-<!-- Third Row of the ranking list-->
-                                <tr>
-                                    <td>
-                                        <div class=" None">
-                                            <a href="/students/">
-                                                Student 3
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class=" None">
-                                            *** High school
-                        
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class=" None">
-                                            89
-                                        </div>
-                                    </td>
-                                    <td class="last">
-                                        <div class="btn-list">
-
-                                        </div>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -229,33 +209,5 @@
             </div>
         </div>
     </div>
-<!-- Score Distribution-->
-    <div class="well center-block">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
-                    <br>
-                    Average GPA: 
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
-                    <br>
-                    Average Exam Score:
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
-                    <br>
-                    Average Experience Score:
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
-                    <br>
-                    Average Skills Score:
-                </a>
-            </div>
-        </div>
-    </div>
+
 {% endblock %}

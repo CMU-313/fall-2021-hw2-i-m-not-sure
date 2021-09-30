@@ -51,11 +51,29 @@ class StudentsView(SimpleView):
         candidates = Candidate.objects.order_by('exam_score','gpa_score')
         reviews = CandidateReview.objects.order_by('experience_score',
                   'skills_score')
-        student_id = self.kwargs['student_id']
+
+        student = Candidate.objects.get(id=self.kwargs['student_id'])
+
+        #computing average data from candidate info
+        avg_exam = candidates.aggregate(Avg('exam_score'))
+        avg_gpa = candidates.aggregate(Avg('gpa_score'))
+        #computing average data from reviews 
+        avg_exp = reviews.aggregate(Avg('experience_score'))
+        avg_skills = reviews.aggregate(Avg('skills_score'))
+        student_reviews = CandidateReview.objects.filter(candidate_name = student.candidate_name)
+        student_avg_exp = student_reviews.aggregate(Avg('experience_score'))
+        student_avg_skills = student_reviews.aggregate(Avg('skills_score'))
+
         return {
             'candidates': candidates,
             'reviews' : reviews,
-            'student_id': student_id,
+            'student': student,
+            'avg_exam': avg_exam['exam_score__avg'],
+            'avg_gpa': avg_gpa['gpa_score__avg'],
+            'avg_exp': avg_exp['experience_score__avg'],
+            'avg_skills': avg_skills['skills_score__avg'],
+            'student_avg_exp': student_avg_exp['experience_score__avg'],
+            'student_avg_skills': student_avg_skills['skills_score__avg'],            
             'title': _('Students')
         }
 

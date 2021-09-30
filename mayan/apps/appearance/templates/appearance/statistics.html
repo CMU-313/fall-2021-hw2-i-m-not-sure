@@ -72,7 +72,7 @@
                     <form action="/search/results/" class="form-horizontal" id="formSearch" method="get" role="search">
                         <div class="col-sm-12">
                             <div class="input-group">
-                                <input class="form-control" name="q" placeholder="Search Student Name" type="text" value="">
+                                <input class="form-control" name="q" placeholder="Search Candidate Name" type="text" value="">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="submit">
                                         Search
@@ -91,25 +91,25 @@
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
                     <br>
-                    Average GPA: 
+                    Average GPA: {{avg_gpa}}
                 </a>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
                     <br>
-                    Average Exam Score:
+                    Average Exam Score: {{avg_exam}}
                 </a>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
                     <br>
-                    Average Experience Score:
+                    Average Experience Score: {{avg_exp}}
                 </a>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
                     <br>
-                    Average Skills Score:
+                    Average Skills Score: {{avg_skills}}
                 </a>
             </div>
         </div>
@@ -118,7 +118,7 @@
     <div class="well center-block">
         <div class="row">
             <div class="col-xs-12 col-sm-8">
-                <h3 class="text-center">Students Ranking</h3>
+                <h3 class="text-center">Candidates Ranking</h3>
                 <div class="well center-block">
                     <div class="table-responsive">
                         <table class="table table-condensed table-striped">
@@ -127,21 +127,28 @@
                                     <th>
                                         <span style="white-space: nowrap">
                                             <span class="appearance-list-column-label">
-                                                Student Name
+                                                Candidate
                                             </span> 
                                         </span>
                                     </th>
                                     <th>
                                         <span style="white-space: nowrap">
                                             <span class="appearance-list-column-label">
-                                                School
+                                                High School
                                             </span>
                                         </span>
                                     </th>
                                     <th>
                                         <span style="white-space: nowrap">
                                             <span class="appearance-list-column-label">
-                                                Score
+                                                GPA
+                                            </span>
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span style="white-space: nowrap">
+                                            <span class="appearance-list-column-label">
+                                                SAT Score
                                             </span>
                                         </span>
                                     </th>
@@ -152,21 +159,28 @@
                             </thead>
 <!--Body of ranking list-->
                             <tbody>
-<!-- First Row of the ranking list-->
                                 {% for candidate in candidates %}
                                 <tr>
+<!--Candidate Name-->
                                     <td>
                                         <div class=" None">
                                             <a href="{% url 'common:students_view' candidate.id %}"> {{candidate.candidate_name}}
                                             </a>
                                         </div>
                                     </td>
-                                    
+<!--Candidate High School-->
                                     <td>
                                         <div class=" None">
                                             {{candidate.high_school}}
                                         </div>
                                     </td>
+<!--Candidate GPA-->
+                                    <td>
+                                        <div class=" None">
+                                            {{candidate.gpa_score}}
+                                        </div>
+                                    </td> 
+<!--Candidate Exam-->                                   
                                     <td>
                                         <div class=" None">
                                             {{candidate.exam_score}}
@@ -178,78 +192,84 @@
                                     </td>
                                 </tr>
                                 {% endfor %}
-<!-- Second Row of the ranking list-->
-                                <tr>
-                                    <td>
-                                        <div class=" None">
-                                            <a href="/students/">
-                                                Student 2
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class=" None">
-                                            *** High school
-                        
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class=" None">
-                                            89
-                                        </div>
-                                    </td>
-                                    <td class="last">
-                                        <div class="btn-list">
-
-                                        </div>
-                                    </td>
-                                </tr>
-<!-- Third Row of the ranking list-->
-                                <tr>
-                                    <td>
-                                        <div class=" None">
-                                            <a href="#">
-                                                Student 3
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class=" None">
-                                            *** High school
-                        
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class=" None">
-                                            89
-                                        </div>
-                                    </td>
-                                    <td class="last">
-                                        <div class="btn-list">
-
-                                        </div>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
 <!-- Reviewers List-->
-            <div class="col-xs-12 col-sm-2">
-                <p class="text-center">Average Score of Reviewers</p>
-                <div class=" None">
-                    reviewer 1: 80
-                </div>
-                <div class=" None">
-                    reviewer 2: 80
-                </div>
-                <div class=" None">
-                    reviewer 3: 80
-                </div>
-                <div class=" None">
-                    reviewer 4: 80
-                </div>
+            <div class="col-xs-12 col-sm-4">
+                <h3 class="text-center">Reviewers Scores</h3>
+                    <div class="table-responsive">
+                        <table class="table table-condensed table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span style="white-space: nowrap">
+                                            <span class="appearance-list-column-label">
+                                                Reviewer
+                                            </span> 
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span style="white-space: nowrap">
+                                            <span class="appearance-list-column-label">
+                                                Candidate
+                                            </span>
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span style="white-space: nowrap">
+                                            <span class="appearance-list-column-label">
+                                                Skills 
+                                            </span>
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span style="white-space: nowrap">
+                                            <span class="appearance-list-column-label">
+                                                Experience 
+                                            </span>
+                                        </span>
+                                    </th>                                    
+                                    <th class="">
+                                        &nbsp;
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+<!-- Body of the reviewer list-->
+                                {% for review in reviews %}
+                                <tr>
+                                    <td>
+                                        <div class=" None"> {{review.reviewer_name}}
+                                        </div>
+                                    </td>
+                                    
+                                    <td>
+                                        <div class=" None">
+                                            {{review.candidate_name}}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class=" None">
+                                            {{review.skills_score}}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class=" None">
+                                            {{review.experience_score}}
+                                        </div>
+                                    </td>                                    
+                                    <td class="last">
+                                        <div class="btn-list">
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>                            
             </div>
         </div>
     </div>   
