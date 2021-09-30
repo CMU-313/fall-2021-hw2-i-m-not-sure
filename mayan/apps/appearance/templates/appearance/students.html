@@ -118,7 +118,7 @@
     <div class="well">
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <h3 class="text-center">{{student.user_name}}</h3>
+                <h3 class="text-center">{{student.candidate_name}}</h3>
                 <div class=" None">
                     Candidate ID: {{student.id}}
                 </div>
@@ -140,7 +140,7 @@
             </div>
 <!-- Students Ranking List-->
             <div class="col-xs-12 col-sm-4">
-                <h3 class="text-center">Candidate Ranking</h3>
+                <h3 class="text-center">Associated Reviewer Ranking</h3>
                 <div class="well center-block">
                     <div class="table-responsive">
                         <table class="table table-condensed table-striped">
@@ -149,21 +149,28 @@
                                     <th>
                                         <span style="white-space: nowrap">
                                             <span class="appearance-list-column-label">
-                                                Candidate Name
+                                                Reviewer Name
                                             </span> 
                                         </span>
                                     </th>
                                     <th>
                                         <span style="white-space: nowrap">
                                             <span class="appearance-list-column-label">
-                                                School
+                                                Candidate
                                             </span>
                                         </span>
                                     </th>
                                     <th>
                                         <span style="white-space: nowrap">
                                             <span class="appearance-list-column-label">
-                                                Score
+                                                Skills
+                                            </span>
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span style="white-space: nowrap">
+                                            <span class="appearance-list-column-label">
+                                                Experience
                                             </span>
                                         </span>
                                     </th>
@@ -174,26 +181,29 @@
                             </thead>
 <!--Body of ranking list-->
                             <tbody>
-                                {% for candidate in candidates %}
+                                {% for reviewer in student_reviews %}
                                     <tr>
                                         <td>
                                             <div class=" None">
                                                 <!--Navigate to the candidate's profile page-->
-                                                <a href="/students/">
-                                                    {{candidate.candidate_name}}
-                                                </a>
+                                                    {{reviewer.reviewer_name}}
                                             </div>
                                         </td>
                                         
                                         <td>
                                             <div class=" None">
-                                                {{candidate.high_school}}
+                                                {{reviewer.candidate_name}}
 
                                             </div>
                                         </td>
                                         <td>
                                             <div class=" None">
-                                                {{candidate.exam_score}}
+                                                {{reviewer.skills_score}}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class=" None">
+                                                {{reviewer.experience_score}}
                                             </div>
                                         </td>
                                         <td class="last">
