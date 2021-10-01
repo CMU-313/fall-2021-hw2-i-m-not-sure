@@ -12,7 +12,6 @@ class Migration(migrations.Migration):
     dependencies = [
         ('display', '0001_initial'),
     ]
-
     operations = [
         migrations.RunPython(load_fixture),
     ]
