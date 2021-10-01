@@ -7,6 +7,7 @@ def load_fixture(apps, schema_editor):
     json_path = os.path.join(app_path, 'fixtures', 'initial_data.json')
     call_command("loaddata", json_path)
 
+
 class Migration(migrations.Migration):  
 
     dependencies = [
