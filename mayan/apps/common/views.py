@@ -24,16 +24,27 @@ class AboutView(SimpleView):
     extra_context = {'title': _('About')}
     template_name = 'appearance/about.html'
 
+# View used for Statistics Page for HW2 Project
 class StatisticsView(SimpleView):
     template_name = 'appearance/statistics.html'
     def get_extra_context(self):
+
+        # Aggregates Candidates ranking from highest Exam/GPA score to lowest
         candidates = Candidate.objects.annotate(score = F('exam_score')/1600 + F('gpa_score')/4).order_by('-score')
+
+        # Aggregates Reviews ranking from highest combined skills/experience score to lowest
         reviews = CandidateReview.objects.annotate(score = F('experience_score') + F('skills_score')).order_by('-score')
-        #computing average data from candidate info
+
+        # Computes average exam score across Candidates
         avg_exam = candidates.aggregate(Avg('exam_score'))
+
+        # Computes average gpa score across Candidates
         avg_gpa = candidates.aggregate(Avg('gpa_score'))
-        #computing average data from reviews 
+
+        # Computes average experience score across Reviews
         avg_exp = reviews.aggregate(Avg('experience_score'))
+
+        # Computes average skills score across Reviews        
         avg_skills = reviews.aggregate(Avg('skills_score'))
         return {
             'candidates': candidates,
@@ -44,23 +55,40 @@ class StatisticsView(SimpleView):
             'avg_skills': avg_skills['skills_score__avg'],
             'title': _('Statistics')
         }
+
+# View used for Students Page for HW2 Project        
 class StudentsView(SimpleView):
     template_name = 'appearance/students.html'
     def get_extra_context(self):
-        #get lists of candidate info and reviews sorted by metrics 
+
+        # Aggregates Candidates ranking from highest Exam/GPA score to lowest
         candidates = Candidate.objects.annotate(score = F('exam_score')/1600 + F('gpa_score')/4).order_by('-score')
+        
+        # Aggregates Reviews ranking from highest combined skills/experience score to lowest
         reviews = CandidateReview.objects.annotate(score = F('experience_score') + F('skills_score')).order_by('-score')
 
+        # Computes average exam score across Candidates
         student = Candidate.objects.get(id=self.kwargs['student_id'])
 
-        #computing average data from candidate info
+        # Computes average exam score across Candidates
         avg_exam = candidates.aggregate(Avg('exam_score'))
+
+        # Computes average gpa score across Candidates
         avg_gpa = candidates.aggregate(Avg('gpa_score'))
-        #computing average data from reviews 
+        
+        # Computes average experience score across Reviews
         avg_exp = reviews.aggregate(Avg('experience_score'))
+
+        # Computes average skills score across Reviews 
         avg_skills = reviews.aggregate(Avg('skills_score'))
+
+        # Aggregates reviews relating to particular candidate
         student_reviews = CandidateReview.objects.filter(candidate_name = student.candidate_name)
+
+        # Computes average experience score across Reviews related to candidate
         student_avg_exp = student_reviews.aggregate(Avg('experience_score'))
+
+        # Computes average skills score across Reviews related to candidate
         student_avg_skills = student_reviews.aggregate(Avg('skills_score'))
 
         return {
