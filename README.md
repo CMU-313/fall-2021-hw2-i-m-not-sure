@@ -1,3 +1,8 @@
+**Our team implemented new feature and the document about how to use and test it is.**
+**The document located at /display_doc folder. Here is the link:[Featured_Implement _Use&Test](https://github.com/CMU-313/fall-2021-hw2-i-m-not-sure/tree/master/display_doc)**
+
+
+
 [![pypi][pypi]][pypi-url]
 ![python][python]
 ![license][license]
