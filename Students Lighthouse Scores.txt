@@ -1,0 +1,13 @@
+Performance: 71
+	-Speed Index
+	-Largest Contentful Paint
+Accessibility: 90
+	-Background and Foreground colors do not have a sufficient contrast ratio
+	-id attributes on active, focusable elements are not unique
+	-Some elements have a tab index greater then 0
+	-Aria ids are not unique
+	-Links do not have a discernable name
+Best Practice: 100
+SEO: 78
+	-Document does not have a meta description
+	-Links are not crawlable
