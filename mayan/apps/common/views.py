@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.templatetags.static import static
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
-from django.db.models import Avg
+from django.db.models import Avg,F
 from stronghold.views import StrongholdPublicMixin
 
 from mayan.apps.views.generics import ConfirmView, SimpleView
@@ -27,8 +27,8 @@ class AboutView(SimpleView):
 class StatisticsView(SimpleView):
     template_name = 'appearance/statistics.html'
     def get_extra_context(self):
-        candidates = Candidate.objects.all()
-        reviews = CandidateReview.objects.all()
+        candidates = Candidate.objects.annotate(score = F('exam_score')/1600 + F('gpa_score')/4).order_by('-score')
+        reviews = CandidateReview.objects.annotate(score = F('experience_score') + F('skills_score')).order_by('-score')
         #computing average data from candidate info
         avg_exam = candidates.aggregate(Avg('exam_score'))
         avg_gpa = candidates.aggregate(Avg('gpa_score'))
@@ -48,9 +48,8 @@ class StudentsView(SimpleView):
     template_name = 'appearance/students.html'
     def get_extra_context(self):
         #get lists of candidate info and reviews sorted by metrics 
-        candidates = Candidate.objects.order_by('exam_score','gpa_score')
-        reviews = CandidateReview.objects.order_by('experience_score',
-                  'skills_score')
+        candidates = Candidate.objects.annotate(score = F('exam_score')/1600 + F('gpa_score')/4).order_by('-score')
+        reviews = CandidateReview.objects.annotate(score = F('experience_score') + F('skills_score')).order_by('-score')
 
         student = Candidate.objects.get(id=self.kwargs['student_id'])
 
@@ -72,6 +71,7 @@ class StudentsView(SimpleView):
             'avg_gpa': avg_gpa['gpa_score__avg'],
             'avg_exp': avg_exp['experience_score__avg'],
             'avg_skills': avg_skills['skills_score__avg'],
+            'student_reviews' : student_reviews,
             'student_avg_exp': student_avg_exp['experience_score__avg'],
             'student_avg_skills': student_avg_skills['skills_score__avg'],            
             'title': _('Students')
