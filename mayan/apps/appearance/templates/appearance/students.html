@@ -7,7 +7,7 @@
 {% load common_tags %}
 {% load smart_settings_tags %}
 
-{% block title %}{% trans 'About' %}{% endblock %}
+{% block title %}{% trans 'Candidate' %}{% endblock %}
 
 {% block stylesheets %}
     <style>
@@ -64,7 +64,8 @@
     {% appearance_get_icon 'mayan.apps.common.icons.icon_forum' as icon_forum %}
     {% appearance_get_icon 'mayan.apps.common.icons.icon_social_paypal' as icon_social_paypal %}
     {% appearance_get_icon 'mayan.apps.common.icons.icon_source_code' as icon_source_code %}
-<!-- Search Bar: Search Students Name-->
+
+    <!-- Search Bar: Search Students Name-->
     <div class="well">
         <div class="well center-block">
             <div class="row">
@@ -85,49 +86,58 @@
             </div>
         </div>
     </div>
-<!-- Score Distribution-->
+
+    <!-- Score Distribution-->
     <div class="well center-block">
         <div class="row">
+
+            <!-- show the average GPA score-->
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
-<!-- show the average GPA-->
                     <br>
                     Average GPA: {{avg_gpa}}
                 </a>
             </div>
+
+            <!-- show the average Exam score-->
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
-<!-- show the average SAT score-->
                     <br>
                     Average Exam Score: {{avg_exam}}
                 </a>
             </div>
+
+            <!-- show the average Experience score-->
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
-<!-- show the average experience score-->
                     <br>
                     Average Experience Score: {{avg_exp}}
                 </a>
             </div>
+
+            <!-- show the average Skills score-->
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
-<!-- show the average skills score-->
                     <br>
                     Average Skills Score: {{avg_skills}}
                 </a>
             </div>
         </div>
     </div> 
+
 <!--Heading: Personal Information-->
 <div class="card h-100 bg-content outer-card-no-border">
     <div class="card-header">
         <h2 id="myinfo-title" tabindex="-1" class="text-center m-0 p-0">Personal Information</h2>
     </div>
 </div>
+
 <!-- Students Information--> 
 <div class="well">
     <div class="row">
         <div class="col-xs-12 col-sm-6">
+
+            <!-- Candidate ID -->
             <div class="card h-100 bg-content outer-card-no-border">
                 <div class="card-header">
                     <h2 id="myinfo-title" tabindex="1" class="text-center m-0 p-0">{{student.candidate_name}}</h2>
@@ -150,6 +160,8 @@
                     </div>
                 </div>
 
+
+                <!-- Candidate High School -->
                 <div class="card-body bg-light border m-3 p-3">
                     <div class="form-content ">
                         <form>
@@ -168,6 +180,7 @@
                     </div>
                 </div>
 
+                <!-- Candidate GPA -->
                 <div class="card-body bg-light border m-3 p-3">
                     <div class="form-content ">
                         <form>
@@ -186,6 +199,7 @@
                     </div>
                 </div>
 
+                <!-- Candidate SAT -->
                 <div class="card-body bg-light border m-3 p-3">
                     <div class="form-content ">
                         <form>
@@ -204,6 +218,7 @@
                     </div>
                 </div>
 
+                <!-- Candidate Average Experience Score -->
                 <div class="card-body bg-light border m-3 p-3">
                     <div class="form-content ">
                         <form>
@@ -222,6 +237,7 @@
                     </div>
                 </div>
 
+                <!-- Candidate Average Skill Score -->
                 <div class="card-body bg-light border m-3 p-3">
                     <div class="form-content ">
                         <form>
@@ -241,7 +257,8 @@
                 </div>
             </div>
         </div>   
-<!-- Students Ranking List-->
+
+            <!-- Students Ranking List-->
             <div class="col-xs-12 col-sm-4">
                 <h3 class="text-center">Associated Reviewer Ranking</h3>
                 <div class="well center-block">
@@ -282,7 +299,8 @@
                                     </th>
                                 </tr>
                             </thead>
-<!--Body of ranking list-->
+                            
+                            <!--Body of ranking list-->
                             <tbody>
                                 {% for reviewer in student_reviews %}
                                     <tr>

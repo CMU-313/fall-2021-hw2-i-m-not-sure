@@ -7,7 +7,7 @@
 {% load common_tags %}
 {% load smart_settings_tags %}
 
-{% block title %}{% trans 'About' %}{% endblock %}
+{% block title %}{% trans 'Statistics' %}{% endblock %}
 
 {% block stylesheets %}
     <style>
@@ -64,7 +64,8 @@
     {% appearance_get_icon 'mayan.apps.common.icons.icon_forum' as icon_forum %}
     {% appearance_get_icon 'mayan.apps.common.icons.icon_social_paypal' as icon_social_paypal %}
     {% appearance_get_icon 'mayan.apps.common.icons.icon_source_code' as icon_source_code %}
-<!-- Search Bar: Search Students Name-->
+    
+    <!-- Search Bar: Search Students Name, Currently WIP-->
     <div class="well">
         <div class="well center-block">
             <div class="row">
@@ -85,27 +86,36 @@
             </div>
         </div>
     </div>
-<!-- Score Distribution-->
+
+    <!-- Average Score Distribution Across All Students-->
     <div class="well center-block">
         <div class="row">
+
+            <!-- show the average GPA-->
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
                     <br>
                     Average GPA: {{avg_gpa}}
                 </a>
             </div>
+
+            <!-- show the average SAT score-->
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
                     <br>
                     Average Exam Score: {{avg_exam}}
                 </a>
             </div>
+
+            <!-- show the average experience score-->
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
                     <br>
                     Average Experience Score: {{avg_exp}}
                 </a>
             </div>
+
+            <!-- show the average skills score-->
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <a class="btn btn-primary btn-lg btn-block " style="height: 120px;">
                     <br>
@@ -114,7 +124,8 @@
             </div>
         </div>
     </div>
-<!-- Students Ranking List-->
+
+    <!-- Students Ranking List-->
     <div class="well center-block">
         <div class="row">
             <div class="col-xs-12 col-sm-8">
@@ -157,30 +168,35 @@
                                     </th>
                                 </tr>
                             </thead>
-<!--Body of ranking list-->
+
+                            <!--Body of ranking list-->
                             <tbody>
                                 {% for candidate in candidates %}
                                 <tr>
-<!--Candidate Name-->
+                                    
+                                    <!--Candidate Name-->
                                     <td>
                                         <div class=" None">
                                             <a href="{% url 'common:students_view' candidate.id %}"> {{candidate.candidate_name}}
                                             </a>
                                         </div>
                                     </td>
-<!--Candidate High School-->
+                                    
+                                    <!--Candidate High School-->
                                     <td>
                                         <div class=" None">
                                             {{candidate.high_school}}
                                         </div>
                                     </td>
-<!--Candidate GPA-->
+                                    
+                                    <!--Candidate GPA Score-->
                                     <td>
                                         <div class=" None">
                                             {{candidate.gpa_score}}
                                         </div>
                                     </td> 
-<!--Candidate Exam-->                                   
+                                    
+                                    <!--Candidate Exam Score-->                                   
                                     <td>
                                         <div class=" None">
                                             {{candidate.exam_score}}
@@ -197,7 +213,8 @@
                     </div>
                 </div>
             </div>
-<!-- Reviewers List Heading-->
+
+            <!-- Reviewers List Heading-->
             <div class="col-xs-12 col-sm-4">
                 <h3 class="text-center">Reviewers Scores</h3>
                     <div class="table-responsive">
@@ -237,25 +254,33 @@
                                     </th>
                                 </tr>
                             </thead>
+
+                            <!-- Body of the reviewer list-->
                             <tbody>
-<!-- Body of the reviewer list-->
                                 {% for review in reviews %}
                                 <tr>
+
+                                    <!-- Reviewer Name -->
                                     <td>
                                         <div class=" None"> {{review.reviewer_name}}
                                         </div>
                                     </td>
                                     
+                                    <!-- Candidate Name -->
                                     <td>
                                         <div class=" None">
                                             {{review.candidate_name}}
                                         </div>
                                     </td>
+
+                                    <!-- Reviewer Skill Score -->
                                     <td>
                                         <div class=" None">
                                             {{review.skills_score}}
                                         </div>
                                     </td>
+
+                                    <!-- Reviewer Experience Score -->
                                     <td>
                                         <div class=" None">
                                             {{review.experience_score}}
